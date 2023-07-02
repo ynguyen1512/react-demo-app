@@ -6,20 +6,19 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import User from './components/User/User';
-import Admin from './components/Admin/Admin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     {/* <React.StrictMode> */}
     <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} >
-            <Route path="users" element={<User />} />
-            <Route path="admins" element={<Admin />}/>
-          </Route>
-        </Routes>
+        <Route path="/" element={<Layout />}>
+        <Route path="contacts/:id" element={<Contact />} />
+        <Route
+          path="contacts/:id/edit"
+          element={<EditContact />}
+        />
+        </Route>;
     </BrowserRouter>
     {/* </React.StrictMode> */}
   </Provider>
