@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react"
+import { getAllUsers } from "../../../services/apiServices"
 const TableUser = (props) =>{
 
-    const {listUsers} = props;
-    //const listUsers = props.listUsers;
+    const [listUsers,setListUsers] = useState([])
     
     return (
         <>

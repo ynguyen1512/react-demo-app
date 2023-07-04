@@ -1,7 +1,7 @@
+
 const TableUser = (props) =>{
 
-    const {listUsers} = props;
-    //const listUsers = props.listUsers;
+    const [listUsers,setListUsers] = useState([])
     
     return (
         <>
