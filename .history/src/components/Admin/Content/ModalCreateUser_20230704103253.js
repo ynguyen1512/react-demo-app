@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FcPlus } from 'react-icons/fc'
+import axios from 'axios';
 import { toast } from "react-toastify";
 import { postCreateNewUser } from '../../../services/apiServices';
 
@@ -59,14 +60,15 @@ const ModalCreateUser = (props) => {
 
     
 
-    let data= await postCreateNewUser(email,password,username,role,image)
-    if(data && data.EC === 0)
+    let res = await 
+    console.log("Check response: ", res.data)
+    if(res.data && res.data.EC === 0)
     {
-      toast.success(data.EM)
+      toast.success(res.data.EM)
       handleClose()
     }
-    if(data.EC !== 0 ) {
-      toast.error(data.EM)
+    if(res.data.EC !== 0 ) {
+      toast.error(res.data.EM)
     }
   }
 

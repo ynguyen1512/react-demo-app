@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { FcPlus } from 'react-icons/fc'
 import { toast } from "react-toastify";
 import { postCreateNewUser } from '../../../services/apiServices';
+import axios from 'axios';
 
 const ModalCreateUser = (props) => {
   const {show, setShow} = props;
