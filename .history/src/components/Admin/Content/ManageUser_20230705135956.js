@@ -10,7 +10,6 @@ const ManageUser = (props) => {
     const [showModalCreateUser, setShowModalCreateUser] = useState(false)
     const [listUsers,setListUsers] = useState([])
     const [showModalUpdateUser, setShowModalUpdateUser] = useState(false)
-    const [dataUpdate, setDataUpdate] = useState({})
 
     useEffect(()=> {
         fetchListUsers()
@@ -23,9 +22,8 @@ const ManageUser = (props) => {
         }
     }
 
-    const handleClickBtnUpdate = (user) => {
+    const handleClickBtnUpdate = () => {
         setShowModalUpdateUser(true);
-        setDataUpdate(user)
     }
 
     return (
@@ -51,7 +49,7 @@ const ManageUser = (props) => {
             <ModalUpdateUser
             show={showModalUpdateUser}
             setShow={setShowModalUpdateUser}
-            dataUpdate={dataUpdate}
+            fetchListUsers={fetchListUsers} 
             />
             </div>
         </div>

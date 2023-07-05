@@ -9,8 +9,6 @@ import ModalUpdateUser from "./ModalUpdateUser"
 const ManageUser = (props) => {
     const [showModalCreateUser, setShowModalCreateUser] = useState(false)
     const [listUsers,setListUsers] = useState([])
-    const [showModalUpdateUser, setShowModalUpdateUser] = useState(false)
-    const [dataUpdate, setDataUpdate] = useState({})
 
     useEffect(()=> {
         fetchListUsers()
@@ -23,11 +21,6 @@ const ManageUser = (props) => {
         }
     }
 
-    const handleClickBtnUpdate = (user) => {
-        setShowModalUpdateUser(true);
-        setDataUpdate(user)
-    }
-
     return (
         <div className="manage-user-container">
             <div className="title">
@@ -38,10 +31,7 @@ const ManageUser = (props) => {
                     <button className="btn btn-light" onClick={()=> setShowModalCreateUser(true)}> <FcPlus/> Add New Users</button>
                 </div>
                 <div className="table-users-container">
-                    <TableUser 
-                    listUsers={listUsers}
-                    handleClickBtnUpdate={handleClickBtnUpdate}
-                    />
+                    <TableUser listUsers={listUsers}/>
                 </div>
             <ModalCreateUser 
             show={showModalCreateUser} 
@@ -49,9 +39,7 @@ const ManageUser = (props) => {
             fetchListUsers={fetchListUsers}
             />
             <ModalUpdateUser
-            show={showModalUpdateUser}
-            setShow={setShowModalUpdateUser}
-            dataUpdate={dataUpdate}
+            show={showModalUpdateUser} 
             />
             </div>
         </div>
