@@ -17,7 +17,6 @@ const ModalUpdateUser = (props) => {
     setRole("USER")
     setImage("")
     setPreviewImage("")
-    props.resetUpdateData()
   };
   const handleShow = () => setShow(true);
 
@@ -60,7 +59,7 @@ const ModalUpdateUser = (props) => {
     //   return;
     // }
     
-    let data= await putUpdateUser(dataUpdate.id,username,role,image)
+    let data= await putUpdateUser(id,username,role,image)
     if(data && data.EC === 0)
     {
       toast.success(data.EM)

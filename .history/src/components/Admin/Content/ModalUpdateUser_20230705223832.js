@@ -8,7 +8,6 @@ import _ from 'lodash'
 
 const ModalUpdateUser = (props) => {
   const {show, setShow, dataUpdate} = props;
-
   const handleClose = () => {
     setShow(false)
     setEmail("")
@@ -17,7 +16,6 @@ const ModalUpdateUser = (props) => {
     setRole("USER")
     setImage("")
     setPreviewImage("")
-    props.resetUpdateData()
   };
   const handleShow = () => setShow(true);
 
@@ -60,7 +58,7 @@ const ModalUpdateUser = (props) => {
     //   return;
     // }
     
-    let data= await putUpdateUser(dataUpdate.id,username,role,image)
+    let data= await putUpdateUser(username,role,image)
     if(data && data.EC === 0)
     {
       toast.success(data.EM)

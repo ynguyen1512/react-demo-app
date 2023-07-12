@@ -10,7 +10,6 @@ import TableUserPaginate from "./TableUserPaginate"
 
 const ManageUser = (props) => {
     const LIMIT_USER = 6;
-    const [pageCount,setPageCount] = useState(0)
     const [showModalCreateUser, setShowModalCreateUser] = useState(false)
     const [listUsers,setListUsers] = useState([])
     const [showModalUpdateUser, setShowModalUpdateUser] = useState(false)
@@ -34,8 +33,7 @@ const ManageUser = (props) => {
     const fetchListUsersWithPaginate = async(page) => {
         let res = await getUserWithPaginate(page, LIMIT_USER)
         if(res.EC === 0) {
-            setListUsers(res.DT.users)
-            setPageCount(res.DT.totalPages)
+            setListUsers(res.DT)
         }
     }
 
@@ -73,8 +71,6 @@ const ManageUser = (props) => {
                     listUsers={listUsers}
                     handleClickBtnUpdate={handleClickBtnUpdate}
                     handleClickBtnDelete = {handleClickBtnDelete}
-                    fetchListUsersWithPaginate={fetchListUsersWithPaginate}
-                    pageCount={pageCount}
                     />
                 </div>
             <ModalCreateUser 

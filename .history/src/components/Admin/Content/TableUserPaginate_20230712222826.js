@@ -1,4 +1,5 @@
-const TableUser = (props) =>{
+import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
+const TableUserPaginate = (props) =>{
 
     const {listUsers} = props;
     //const listUsers = props.listUsers;
@@ -47,4 +48,4 @@ const TableUser = (props) =>{
     )
 }
 
-export default TableUser
+export default TableUserPaginate

@@ -1,8 +1,20 @@
-const TableUser = (props) =>{
+import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
+import { useState, useEffect } from "react";
+
+
+const TableUserPaginate = (props) =>{
 
     const {listUsers} = props;
     //const listUsers = props.listUsers;
-    
+    const [pageCount, setPageCount] = useState(0);
+
+
+    const handlePageClick = (event) => {
+        const newOffset = event.selected * itemsPerPage % items.length;
+        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+        setItemOffset(newOffset);
+      };
+
     return (
         <>
         <table className="table table-hover table-bordered">
@@ -43,8 +55,28 @@ const TableUser = (props) =>{
             </tr>}
         </tbody>
         </table>
+        <ReactPaginate
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+        renderOnZeroPageCount={null}
+      />
         </>
     )
 }
 
-export default TableUser
+export default TableUserPaginate

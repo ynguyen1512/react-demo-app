@@ -1,4 +1,4 @@
-const TableUser = (props) =>{
+const TableUserPaginate = (props) =>{
 
     const {listUsers} = props;
     //const listUsers = props.listUsers;
@@ -47,4 +47,4 @@ const TableUser = (props) =>{
     )
 }
 
-export default TableUser
+export default TableUserPaginate

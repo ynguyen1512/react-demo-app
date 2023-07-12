@@ -8,7 +8,6 @@ import _ from 'lodash'
 
 const ModalUpdateUser = (props) => {
   const {show, setShow, dataUpdate} = props;
-
   const handleClose = () => {
     setShow(false)
     setEmail("")
@@ -17,7 +16,6 @@ const ModalUpdateUser = (props) => {
     setRole("USER")
     setImage("")
     setPreviewImage("")
-    props.resetUpdateData()
   };
   const handleShow = () => setShow(true);
 
@@ -50,17 +48,32 @@ const ModalUpdateUser = (props) => {
     }
   }
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
   const handleSubmitCreateUser = async() => {
     //validate
-    // const isValidEmail = validateEmail(email);
+    const isValidEmail = validateEmail(email);
 
-    // if(!isValidEmail) {
-    //   toast.error("Invalid email")
-    //   return;
-    // }
+    if(!isValidEmail) {
+      toast.error("Invalid email")
+      return;
+    }
+
+    if(!password) {
+      toast.error("Invalid password")
+      return;
+    }
+
+
     
-    let data= await putUpdateUser(dataUpdate.id,username,role,image)
+
+    let data= await postCreateNewUser(email,password,username,role,image)
     if(data && data.EC === 0)
     {
       toast.success(data.EM)
