@@ -12,13 +12,6 @@ import Register from './components/Auth/Register';
 import ListQuiz from './components/User/ListQuiz';
 import DetailQuiz from './components/User/DetailQuiz';
 
-const NotFound =()=> {
-  return (
-    <div class="container mt-3 alert alert-danger" role="alert">
-      404. Not Found Data With Your Current URL
-    </div>
-  )
-}
 const Layout = (props) => {
     return (
         <>
@@ -37,7 +30,7 @@ const Layout = (props) => {
 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
-          <Route path="*" element={<NotFound />} />
+
         </Routes>
 
         <ToastContainer

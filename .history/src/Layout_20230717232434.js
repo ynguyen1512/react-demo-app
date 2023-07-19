@@ -14,8 +14,8 @@ import DetailQuiz from './components/User/DetailQuiz';
 
 const NotFound =()=> {
   return (
-    <div class="container mt-3 alert alert-danger" role="alert">
-      404. Not Found Data With Your Current URL
+    <div class="alert alert-danger" role="alert">
+      Not Found Data With Your Current URL
     </div>
   )
 }
